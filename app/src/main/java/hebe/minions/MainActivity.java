@@ -77,8 +77,8 @@ public class MainActivity extends AppCompatActivity {
         btnSetDevice.setOnClickListener(btnSetDeviceClickListener);
 
         // fan slider
-        SeekBar sldSlider = findViewById(R.id.sldFan);
-        sldSlider.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+        SeekBar sldFan = findViewById(R.id.sldFan);
+        sldFan.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int i, boolean b) {
                 Log.d("MainActivity", "Fan set to "+i+" with boolean "+b);
@@ -107,8 +107,8 @@ public class MainActivity extends AppCompatActivity {
         });
 
         // aircon slider
-        SeekBar sldSlider = (SeekBar) findViewById(R.id.sldSetAircon);
-        sldSlider.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+        SeekBar sldSetAircon = (SeekBar) findViewById(R.id.sldSetAircon);
+        sldSetAircon.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int i, boolean b) {
                 Log.d("MainActivity", "Temp set to "+i+" with boolean "+b);
