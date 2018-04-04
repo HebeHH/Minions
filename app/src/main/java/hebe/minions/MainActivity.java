@@ -76,30 +76,13 @@ public class MainActivity extends AppCompatActivity {
         Button btnSetDevice = findViewById(R.id.btnSetDevice);
         btnSetDevice.setOnClickListener(btnSetDeviceClickListener);
 
-        Switch swtLights = findViewById(R.id.swtLights);
-        swtLights.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
-                Log.d("MainActivity","Toggled Lights...");
-                myDweet("Lights",(b ? "On" : "Off"));
-            }
-        });
-
-        Switch swtCamera = findViewById(R.id.swtCamera);
-        swtCamera.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
-                Log.d("MainActivity","Toggled Camera...");
-                myDweet("Camera",(b ? "On" : "Off"));
-            }
-        });
-
-        SeekBar sldSlider = (SeekBar) findViewById(R.id.sldSlider);
+        // fan slider
+        SeekBar sldSlider = findViewById(R.id.sldFan);
         sldSlider.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int i, boolean b) {
-                Log.d("MainActivity", "Seekbar set to "+i+" with boolean "+b);
-                myDweet("Slider",i+"");
+                Log.d("MainActivity", "Fan set to "+i+" with boolean "+b);
+                myDweet("Fan",i+"");
             }
 
             @Override
@@ -113,14 +96,54 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        // aircon button
+        Switch swtFan = findViewById(R.id.swtAircon);
+        swtFan.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+                Log.d( "MainActivity", "Toggled Aircon...");
+                myDweet("Aircon", (b ? "On" : "Off"));
+            }
+        });
+
+        // aircon slider
+        SeekBar sldSlider = (SeekBar) findViewById(R.id.sldSetAircon);
+        sldSlider.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+            @Override
+            public void onProgressChanged(SeekBar seekBar, int i, boolean b) {
+                Log.d("MainActivity", "Temp set to "+i+" with boolean "+b);
+                myDweet("Temp",i+"");
+            }
+
+            @Override
+            public void onStartTrackingTouch(SeekBar seekBar) {
+
+            }
+
+            @Override
+            public void onStopTrackingTouch(SeekBar seekBar) {
+
+            }
+        });
+
+        // lights button
+        Switch swtLights = findViewById(R.id.swtLights);
+        swtLights.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+                Log.d("MainActivity","Toggled Lights...");
+                myDweet("Lights",(b ? "On" : "Off"));
+            }
+        });
+
+
     }
 
     @SuppressLint("StaticFieldLeak")
     public void myDweet(String key, String value) {
         String dweetURL = "http://192.241.140.108:5000/set/"+ MainActivity.deviceName+"_"+key+"?value="+value;
-        new AsyncTask<String, Void, Void>(
 
-        ) {
+        new AsyncTask<String, Void, Void>() {
             @Override
             protected Void doInBackground(String... urls) {
                 try {
@@ -140,13 +163,6 @@ public class MainActivity extends AppCompatActivity {
                                 }
                             });
 
-
-//                    java.net.URL url = new java.net.URL(urls[0]);
-//                    Log.d("MainActivity","Dweeting - "+urls[0]);
-//                    HttpURLConnection urlConnection = (HttpURLConnection) url.openConnection();
-//                    InputStream in = new BufferedInputStream(urlConnection.getInputStream());
-//                    urlConnection.disconnect();
-//                    Log.d("MainActivity","Dweeted.");
                 } catch (Exception e) {
                     Log.d("MainActivity", "Error sending dweet");
                     Log.d("MainActivity",e.toString());
