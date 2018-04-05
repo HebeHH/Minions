@@ -16,6 +16,7 @@ import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.SeekBar;
 import android.widget.Switch;
+import android.widget.ToggleButton;
 
 import com.androidnetworking.AndroidNetworking;
 import com.androidnetworking.error.ANError;
@@ -76,13 +77,32 @@ public class MainActivity extends AppCompatActivity {
         Button btnSetDevice = findViewById(R.id.btnSetDevice);
         btnSetDevice.setOnClickListener(btnSetDeviceClickListener);
 
+        // aircon button
+//        Switch btnFan = findViewById(R.id.btnFan);
+//        btnFan.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+//            @Override
+//            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+//                Log.d( "MainActivity", "Toggled Fan...");
+//                myDweet("Fan", (b ? "On" : "Off"));
+//            }
+//        });
+
+        ToggleButton btnFan = findViewById(R.id.btnFan);
+        btnFan.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener(){
+            @Override
+            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+                Log.d( "MainActivity", "Toggled Fan...");
+                myDweet("Fan", (b ? "On" : "Off"));
+            }
+        });
+
         // fan slider
         SeekBar sldFan = findViewById(R.id.sldFan);
         sldFan.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int i, boolean b) {
                 Log.d("MainActivity", "Fan set to "+i+" with boolean "+b);
-                myDweet("Fan",i+"");
+                myDweet("FanIntensity",i+"");
             }
 
             @Override
@@ -97,8 +117,8 @@ public class MainActivity extends AppCompatActivity {
         });
 
         // aircon button
-        Switch swtFan = findViewById(R.id.swtAircon);
-        swtFan.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+        ToggleButton btnAircon = findViewById(R.id.btnAircon);
+        btnAircon.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
                 Log.d( "MainActivity", "Toggled Aircon...");
@@ -127,8 +147,8 @@ public class MainActivity extends AppCompatActivity {
         });
 
         // lights button
-        Switch swtLights = findViewById(R.id.swtLights);
-        swtLights.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+        ToggleButton btnLights = findViewById(R.id.btnLights);
+        btnLights.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
                 Log.d("MainActivity","Toggled Lights...");

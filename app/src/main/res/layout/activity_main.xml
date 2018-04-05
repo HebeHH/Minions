@@ -29,115 +29,173 @@
         android:layout_height="wrap_content"
         android:text="Set Device" />
 
-
     <LinearLayout
-        android:id="@+id/lyt1"
+        android:id="@+id/ctlFan"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintBottom_toTopOf="@+id/lyt2"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toTopOf="@+id/ctlAircon"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btnSetDevice"
         app:layout_constraintVertical_chainStyle="spread">
 
-        <TextView
-            android:id="@+id/txtFan"
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="Fan"
-            android:textColor="@android:color/background_dark"
-            android:textSize="24sp" />
+            android:paddingBottom="5dp"
+            android:paddingLeft="100dp"
+            android:paddingRight="100dp">
+
+            <ToggleButton
+                android:id="@+id/btnFan"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textOff="fan"
+                android:textOn="fan"
+                tools:ignore="HardcodedText" />
+        </LinearLayout>
+
+        <!--<LinearLayout-->
+        <!--android:id="@+id/lyt1.2"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:orientation="horizontal">-->
+
+        <!--<TextView-->
+        <!--android:id="@+id/txtFan"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_weight="1"-->
+        <!--android:text="Fan"-->
+        <!--android:textColor="@android:color/background_dark"-->
+        <!--android:textSize="24sp" />-->
 
         <SeekBar
             android:id="@+id/sldFan"
             style="@style/Widget.AppCompat.SeekBar.Discrete"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
             android:layout_weight="1"
             android:max="5"
             android:progress="3" />
 
+        <!--</LinearLayout>-->
     </LinearLayout>
 
 
     <LinearLayout
-        android:id="@+id/lyt2"
+        android:id="@+id/ctlAircon"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        app:layout_constraintBottom_toTopOf="@+id/lyt3"
+        app:layout_constraintBottom_toTopOf="@+id/ctlLight"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/lyt1"
-        app:layout_constraintVertical_chainStyle="packed">
+        app:layout_constraintTop_toBottomOf="@+id/ctlFan"
+        app:layout_constraintVertical_chainStyle="spread">
 
+        <!--<LinearLayout-->
+        <!--android:id="@+id/ctlAircon"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:orientation="horizontal">-->
+
+        <!--<Switch-->
+        <!--android:id="@+id/swtAircon"-->
+        <!--android:layout_width="0dp"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_weight="1"-->
+        <!--android:checked="false"-->
+        <!--android:text="Air-con"-->
+        <!--android:textSize="24sp"-->
+        <!--tools:checked="false" />-->
+        <!--</LinearLayout>-->
         <LinearLayout
-            android:id="@+id/lyt2.1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:paddingBottom="5dp"
+            android:paddingLeft="100dp"
+            android:paddingRight="100dp">
 
-            <Switch
-                android:id="@+id/swtAircon"
-                android:layout_width="0dp"
+            <ToggleButton
+                android:id="@+id/btnAircon"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:checked="false"
-                android:text="Air-con"
-                android:textSize="24sp"
-                tools:checked="false" />
+                android:textOff="air-con"
+                android:textOn="air-con" />
         </LinearLayout>
 
+        <!--<LinearLayout-->
+        <!--android:id="@+id/lyt2.2"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:orientation="horizontal">-->
 
-        <LinearLayout
-            android:id="@+id/lyt2.2"
+        <!--<TextView-->
+        <!--android:id="@+id/txtSetAircon"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_weight="1"-->
+        <!--android:text="Air-con temp"-->
+        <!--android:textColor="@android:color/background_dark"-->
+        <!--android:textSize="24sp" />-->
+
+        <SeekBar
+            android:id="@+id/sldSetAircon"
+            style="@style/Widget.AppCompat.SeekBar.Discrete"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:layout_weight="1"
+            android:max="20"
+            android:progress="12" />
 
-            <TextView
-                android:id="@+id/txtSetAircon"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="Air-con temp"
-                android:textColor="@android:color/background_dark"
-                android:textSize="24sp" />
-
-            <SeekBar
-                android:id="@+id/sldSetAircon"
-                style="@style/Widget.AppCompat.SeekBar.Discrete"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:max="5"
-                android:progress="3" />
-
-        </LinearLayout>
+        <!--</LinearLayout>-->
     </LinearLayout>
 
+
     <LinearLayout
-        android:id="@+id/lyt3"
+        android:id="@+id/ctlLight"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
+        android:orientation="vertical"
+        android:paddingLeft="100dp"
+        android:paddingRight="100dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/lyt2"
-        app:layout_constraintVertical_chainStyle="packed">
+        app:layout_constraintTop_toBottomOf="@+id/ctlAircon"
+        app:layout_constraintVertical_chainStyle="spread">
 
-        <Switch
-            android:id="@+id/swtLights"
-            android:layout_width="0dp"
+
+        <ToggleButton
+            android:id="@+id/btnLights"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="Light"
-            android:textSize="24sp" />
-
+            android:textOff="light"
+            android:textOn="light" />
     </LinearLayout>
+
+    <!--<LinearLayout-->
+    <!--android:id="@+id/lyt3"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:orientation="horizontal"-->
+    <!--app:layout_constraintBottom_toBottomOf="parent"-->
+    <!--app:layout_constraintLeft_toLeftOf="parent"-->
+    <!--app:layout_constraintRight_toRightOf="parent"-->
+    <!--app:layout_constraintTop_toBottomOf="@+id/lyt2"-->
+    <!--app:layout_constraintVertical_chainStyle="packed">-->
+
+    <!--<Switch-->
+    <!--android:id="@+id/swtLights"-->
+    <!--android:layout_width="0dp"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:layout_weight="1"-->
+    <!--android:text="Light"-->
+    <!--android:textSize="24sp" />-->
+
+    <!--</LinearLayout>-->
 
 
 </android.support.constraint.ConstraintLayout>
