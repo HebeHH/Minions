@@ -1,0 +1,244 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginEnd="16dp"
+    android:layout_marginStart="16dp"
+    tools:context="hebe.minions.CycleAircon">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+
+
+        <TextView
+            android:id="@+id/FirstStage"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="First Stage:"
+            android:padding="10dp"
+            android:textSize="25dp"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <Switch
+                android:id="@+id/caLights1"
+                android:layout_width="110dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0"
+                android:text="Lights"
+                android:textSize="20dp" />
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/caFan1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <Switch
+                android:id="@+id/caBtnFan1"
+                android:layout_width="110dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0"
+                android:text="Fan"
+                android:textSize="20dp" />
+
+            <SeekBar
+                android:id="@+id/caSwtFan1"
+                style="@style/Widget.AppCompat.SeekBar.Discrete"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:max="4"
+                android:progress="3" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/caAircon1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <Switch
+                android:id="@+id/caBtnAircon1"
+                android:layout_width="110dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0"
+                android:text="Aircon "
+                android:textSize="20dp" />
+
+            <SeekBar
+                android:id="@+id/caSldAircon1"
+                style="@style/Widget.AppCompat.SeekBar.Discrete"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:max="14"
+                android:progress="3" />
+
+        </LinearLayout>
+
+
+
+        <TextView
+            android:id="@+id/secondStage"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Second Stage:"
+            android:padding="10dp"
+            android:textSize="25dp"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <Switch
+                android:id="@+id/caLights2"
+                android:layout_width="110dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0"
+                android:text="Lights"
+                android:textSize="20dp" />
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/caFan2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <Switch
+                android:id="@+id/caBtnFan2"
+                android:layout_width="110dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0"
+                android:text="Fan"
+                android:textSize="20dp" />
+
+            <SeekBar
+                android:id="@+id/caSwtFan2"
+                style="@style/Widget.AppCompat.SeekBar.Discrete"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:max="4"
+                android:progress="3" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/caAircon2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <Switch
+                android:id="@+id/caBtnAircon2"
+                android:layout_width="110dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0"
+                android:text="Aircon "
+                android:textSize="20dp" />
+
+            <SeekBar
+                android:id="@+id/caSldAircon2"
+                style="@style/Widget.AppCompat.SeekBar.Discrete"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:max="14"
+                android:progress="3" />
+
+        </LinearLayout>
+
+
+        <TextView
+            android:id="@+id/secondStage"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="And Then:"
+            android:padding="10dp"
+            android:textSize="25dp"/>
+
+
+        <RadioGroup
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:checkedButton="@id/caRdbRepeat">
+
+            <RadioButton
+                android:id="@+id/caRdbRepeat"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:checked="true"
+                android:text="Repeat"
+                android:textSize="20dp"/>
+
+            <RadioButton
+                android:id="@+id/caRdbContinue"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Continue"
+                android:textSize="20dp"/>
+
+            <RadioButton
+                android:id="@+id/caRdbTurnOff"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Turn Off"
+                android:textSize="20dp"/>
+        </RadioGroup>
+
+
+
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="bottom"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/caSet"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:layout_weight="1"
+                android:background="@color/colorPrimaryDark"
+                android:text="Create"
+                android:textColor="@color/white" />
+
+            <Button
+                android:id="@+id/caCancel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:layout_weight="1"
+                android:background="@color/colorPrimaryDark"
+                android:text="Cancel"
+                android:textColor="@color/white" />
+        </LinearLayout>
+
+
+
+    </LinearLayout>
+
+    </android.support.constraint.ConstraintLayout>

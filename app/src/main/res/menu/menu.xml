@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools" tools:context=".MainActivity">
+
+    <item
+        android:id="@+id/mnuCycleAircon"
+        android:icon="@android:drawable/ic_menu_add"
+        android:title="Cycle Aircon"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/mnuAddEvent"
+        android:title="Add Event"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/mnuMngeEvents"
+        android:title="Manage Events"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/mnuAddState"
+        android:title="Add State"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/mnuMngeStates"
+        android:title="Manage States"
+        app:showAsAction="never" />
+</menu>
