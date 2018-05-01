@@ -33,7 +33,7 @@ import com.androidnetworking.interfaces.StringRequestListener;
 public class MainActivity extends AppCompatActivity {
 
     public static MainActivity instance;
-    public static String     deviceName = "raspi1";
+    public static String     deviceName = "hebe";
 
     View.OnClickListener btnSetDeviceClickListener = new View.OnClickListener() {
         @Override
@@ -210,7 +210,7 @@ public class MainActivity extends AppCompatActivity {
 
     @SuppressLint("StaticFieldLeak")
     public void myDweet(String key, String value) {
-        String dweetURL = "http://192.241.140.108:5000/set/"+ MainActivity.deviceName+"_"+key+"?value="+value;
+        String dweetURL = "http://192.241.140.108:5000/set/"+ MainActivity.deviceName+"?gadget="+key+"&value="+value;
 
         new AsyncTask<String, Void, Void>() {
             @Override
@@ -242,28 +242,4 @@ public class MainActivity extends AppCompatActivity {
         }.execute(dweetURL);
     }
 
-    //    public void dweet(String key, String value) {
-//        String dweetURL = "https://dweet.io/dweet/for/"+MainActivity.deviceName+"?"+key+"="+value;
-//        new AsyncTask<String, Void, Void>(
-//
-//        ) {
-//            @Override
-//            protected Void doInBackground(String... urls) {
-//                try {
-//
-//                    java.net.URL url = new java.net.URL(urls[0]);
-//                    Log.d("MainActivity","Dweeting - "+urls[0]);
-//                    HttpURLConnection urlConnection = (HttpURLConnection) url.openConnection();
-////                    InputStream in = new BufferedInputStream(urlConnection.getInputStream());
-//                    urlConnection.disconnect();
-//                    Log.d("MainActivity","Dweeted.");
-//                } catch (Exception e) {
-//                    Log.d("MainActivity", "Error sending dweet");
-//                    Log.d("MainActivity",e.toString());
-//                }
-//
-//                return null;
-//            }
-//        }.execute(dweetURL);
-//    }
 }
