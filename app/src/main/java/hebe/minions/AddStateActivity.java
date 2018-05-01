@@ -35,6 +35,10 @@ public class AddStateActivity extends AppCompatActivity {
         ActionBar bar = getSupportActionBar();
         bar.setBackgroundDrawable(new ColorDrawable(Color.parseColor("#8b2249")));
 
+        EditText asName   = (EditText)findViewById(R.id.asName);
+        if (getIntent().getStringExtra("Name")!=null) {
+            asName.setText(getIntent().getStringExtra("Name"));
+        }
 
         Button btnYes = findViewById(R.id.asSet);
         btnYes.setOnClickListener(new View.OnClickListener() {

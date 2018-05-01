@@ -1,14 +1,22 @@
 package hebe.minions;
 
+import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
+import android.os.AsyncTask;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
+
+import com.androidnetworking.AndroidNetworking;
+import com.androidnetworking.error.ANError;
+import com.androidnetworking.interfaces.StringRequestListener;
 
 public class ManageStatesActivity extends AppCompatActivity {
 
@@ -23,13 +31,27 @@ public class ManageStatesActivity extends AppCompatActivity {
         ActionBar bar = getSupportActionBar();
         bar.setBackgroundDrawable(new ColorDrawable(Color.parseColor("#8b2249")));
 
-
-
-
-        Button btnYes = findViewById(R.id.msSet);
-        btnYes.setOnClickListener(new View.OnClickListener() {
+        Button btnEdit = findViewById(R.id.msEdit);
+        btnEdit.setOnClickListener(new View.OnClickListener() {
 
             public void onClick(View v) {
+
+                EditText msName = (EditText)findViewById(R.id.msName);
+                Intent intent = new Intent(ManageStatesActivity.this, AddStateActivity.class);
+                intent.putExtra("Name", msName.getText().toString());
+                startActivity(intent);
+            }
+        });
+
+
+        Button btnDel = findViewById(R.id.msDel);
+        btnDel.setOnClickListener(new View.OnClickListener() {
+
+            public void onClick(View v) {
+
+                EditText msName = (EditText)findViewById(R.id.msName);
+
+                delState(msName.getText()+"");
 
                 AlertDialog doneDialogue = new AlertDialog.Builder(ManageStatesActivity.this).create();
                 doneDialogue.setTitle("Done!");
@@ -39,7 +61,8 @@ public class ManageStatesActivity extends AppCompatActivity {
 
                 try {
                     wait(15000);
-                } catch (Exception e) {}
+                } catch (Exception e) {
+                }
 
                 Intent intent = new Intent(ManageStatesActivity.this, MainActivity.class);
                 startActivity(intent);
@@ -54,5 +77,38 @@ public class ManageStatesActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+    }
+    @SuppressLint("StaticFieldLeak")
+    public void delState(String title) {
+        String dweetURL = "http://192.241.140.108:5000/delstate/"+ MainActivity.deviceName+"?title="+title;
+
+        new AsyncTask<String, Void, Void>() {
+            @Override
+            protected Void doInBackground(String... urls) {
+                try {
+
+                    AndroidNetworking.get(urls[0]).build()
+                            .getAsString(new StringRequestListener() {
+                                @Override
+                                public void onResponse(String response) {
+                                    Log.d("MainActivity","myDweet successful.");
+                                }
+
+                                @Override
+                                public void onError(ANError anError) {
+                                    Log.d("MainActivity","myDweet errored.");
+                                    Log.d("MainActivity",anError.getErrorDetail());
+                                    Log.d("MainActivity",anError.getMessage());
+                                }
+                            });
+
+                } catch (Exception e) {
+                    Log.d("MainActivity", "Error sending dweet");
+                    Log.d("MainActivity",e.toString());
+                }
+
+                return null;
+            }
+        }.execute(dweetURL);
     }
 }

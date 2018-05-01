@@ -101,7 +101,7 @@
         android:orientation="vertical"
         android:paddingLeft="100dp"
         android:paddingRight="100dp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/stateChoice"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/ctlAircon"
@@ -115,6 +115,39 @@
             android:textOff="light"
             android:textOn="light"
             android:background="@drawable/button_format" />
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:id="@+id/stateChoice"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ctlLight"
+        app:layout_constraintVertical_chainStyle="spread">
+
+
+        <EditText
+            android:id="@+id/selState"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="left"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:text="Select a State"
+            android:textSize="20sp" />
+
+        <Button
+            android:id="@+id/goState"
+            android:layout_gravity="right"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@color/colorPrimaryDark"
+            android:textColor="@color/white"
+            android:text="Go" />
     </LinearLayout>
 
 

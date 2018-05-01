@@ -42,6 +42,13 @@ public class AddEventActivity extends AppCompatActivity {
         ActionBar bar = getSupportActionBar();
         bar.setBackgroundDrawable(new ColorDrawable(Color.parseColor("#8b2249")));
 
+        Bundle bundle = getIntent().getExtras();
+
+        EditText aeName   = (EditText)findViewById(R.id.aeName);
+        if (bundle.getString("Name")!=null) {
+            aeName.setText(bundle.getString("Name"));
+        }
+
 
         Button btnYes = findViewById(R.id.aeSet);
         btnYes.setOnClickListener(new View.OnClickListener() {

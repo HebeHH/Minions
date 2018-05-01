@@ -19,9 +19,11 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CompoundButton;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.SeekBar;
 import android.widget.Switch;
+import android.widget.TimePicker;
 import android.widget.ToggleButton;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -29,6 +31,8 @@ import android.support.v7.widget.Toolbar;
 import com.androidnetworking.AndroidNetworking;
 import com.androidnetworking.error.ANError;
 import com.androidnetworking.interfaces.StringRequestListener;
+
+import java.util.Calendar;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -205,12 +209,60 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        final Button goState = findViewById(R.id.goState);
+        goState.setOnClickListener(new View.OnClickListener() {
+
+            public void onClick(View v) {
+
+                EditText stateName   = (EditText)findViewById(R.id.selState);
+
+                goState(stateName.getText().toString());
+                Log.d("MainActivity", "State Changed To: " + stateName.getText().toString());
+                Intent intent = new Intent(MainActivity.this, MainActivity.class);
+                startActivity(intent);
+            }
+        });
+
 
     }
 
     @SuppressLint("StaticFieldLeak")
     public void myDweet(String key, String value) {
         String dweetURL = "http://192.241.140.108:5000/set/"+ MainActivity.deviceName+"?gadget="+key+"&value="+value;
+
+        new AsyncTask<String, Void, Void>() {
+            @Override
+            protected Void doInBackground(String... urls) {
+                try {
+
+                    AndroidNetworking.get(urls[0]).build()
+                            .getAsString(new StringRequestListener() {
+                                @Override
+                                public void onResponse(String response) {
+                                    Log.d("MainActivity","myDweet successful.");
+                                }
+
+                                @Override
+                                public void onError(ANError anError) {
+                                    Log.d("MainActivity","myDweet errored.");
+                                    Log.d("MainActivity",anError.getErrorDetail());
+                                    Log.d("MainActivity",anError.getMessage());
+                                }
+                            });
+
+                } catch (Exception e) {
+                    Log.d("MainActivity", "Error sending dweet");
+                    Log.d("MainActivity",e.toString());
+                }
+
+                return null;
+            }
+        }.execute(dweetURL);
+    }
+
+    @SuppressLint("StaticFieldLeak")
+    public void goState(String title) {
+        String dweetURL = "http://192.241.140.108:5000/setstate/"+ MainActivity.deviceName+"?title="+title;
 
         new AsyncTask<String, Void, Void>() {
             @Override
